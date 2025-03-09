@@ -19,22 +19,16 @@ challenges = {
 }
 
 def index(request):
-    list_items = list(challenges.keys())
-    li_list = ""
-    for item in list_items:
-        capitalized = item.capitalize()
-        month_path = reverse("monthly_challenge", args=[item])
-        li_list += f'<li><a href="{month_path}">{capitalized}</a></li>'
+    months = list(challenges.keys())
+    return render(request, "challenges/index.html", {"months": months})
 
-    response_data = f'<ul>{li_list}</ul>'
-
-    return HttpResponse(response_data)
 
 
 def monthly_challenge(request, month):
     try:
         challenge_text = challenges[month]
         return render(request, "challenges/challenge.html", {
+            "month": month,
             "text": challenge_text,
         })
     except:
