@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.http import HttpResponse, HttpResponseNotFound, HttpResponseRedirect
+from django.http import HttpResponseNotFound, HttpResponseRedirect
 from django.urls import reverse
 
 
@@ -15,7 +15,7 @@ challenges = {
     "september": "september",
     "october": "october",
     "november": "november",
-    "december": "december",
+    "december": None,
 }
 
 def index(request):
