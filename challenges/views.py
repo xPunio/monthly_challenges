@@ -34,7 +34,9 @@ def index(request):
 def monthly_challenge(request, month):
     try:
         challenge_text = challenges[month]
-        return HttpResponse(challenge_text)
+        return render(request, "challenges/challenge.html", {
+            "text": challenge_text,
+        })
     except:
         return HttpResponseNotFound("This month is not supported")
 
